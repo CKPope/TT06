@@ -71,7 +71,7 @@ assign uio_out = 8'b0;
 
 // Input Synchronizer
 input_synch buttons
-(.clk (clock), .reset(!reset_n), .synch_in ({!reset_n, motion_inp}), .synch_out ({sync_reset, sync_motion}));
+(.clk (clock), .reset(!reset_n), .sync_reset(sync_reset), .sync_in(motion_inp),  .sync_out (sync_motion));
 
 //FSM:
 Mealy_SM xycontroller 
@@ -113,4 +113,5 @@ Compx4 y_comp (.a_hex(y_pos), .b_hex(y_target_reg), .a_eq_b(y_comp_eq), .a_gt_b(
 //assign motion_out= sync_motion;
 
 endmodule
+
 
